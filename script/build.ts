@@ -35,10 +35,6 @@ const allowlist = [
 async function buildAll() {
   await rm("dist", { recursive: true, force: true });
 
-  console.log("generating sitemap...");
-  const { execSync } = await import("child_process");
-  execSync("node generate-sitemap.js", { stdio: "inherit" });
-
   console.log("building client...");
   await viteBuild();
 
@@ -69,3 +65,4 @@ buildAll().catch((err) => {
   console.error(err);
   process.exit(1);
 });
+
